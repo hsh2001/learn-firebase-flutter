@@ -15,6 +15,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   pedantic: 1.11.0
+  google_sign_in: #^4.5.9
+    git:
+      url: git://github.com/sanekyy/plugins.git
+      ref: ios-fix-sign-in
+      path: packages/google_sign_in/google_sign_in
+  firebase_auth: ^0.14.0+5
+  cloud_firestore: ^0.12.9+5
+  firebase_core: ^0.4.0+9
 
 flutter:
   uses-material-design: true
