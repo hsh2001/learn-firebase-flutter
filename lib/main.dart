@@ -1,37 +1,33 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/provider/CountProvider.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+import 'auth.dart';
 
-/// You can remove _Screen widget to reset project when you use this template.
+void main() async {
+  // await Firebase.initializeApp(
+  //   options: const FirebaseOptions(
+  //     apiKey: 'AIzaSyCe9rfnYZ9d1j6Q8Jkl-JW1U2NL4_MLzQk',
+  //     appId: '1:1013845001654:ios:7f6633acf2e92b95caad17',
+  //     messagingSenderId: '',
+  //     projectId: 'test-636a3',
+  //   ),
+  // );
+
+  runApp(MyApp());
+}
+
 class _Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.asset(
-              'images/moa.jpg',
-              width: 100,
-              height: 100,
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(top: 20),
-          child: Center(
-            child: Text(
-              'Hello Flutter!',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
-      ],
+    return ElevatedButton(
+      onPressed: () => createUser(
+        email: 'tmdgus0084@naver.com',
+        password: '1234',
+        errorHandler: print,
+      ),
+      child: const Text('로그인'),
     );
   }
 }
@@ -46,7 +42,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Hello flutter',
         theme: ThemeData(primaryColor: Colors.blue),
-        home: Scaffold(body: _Screen()),
+        home: Scaffold(body: Center(child: _Screen())),
       ),
     );
   }
