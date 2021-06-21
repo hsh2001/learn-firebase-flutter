@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-final auth = FirebaseAuth.instance;
+final _auth = FirebaseAuth.instance;
 bool _isInit = false;
 
 Future init() async {
@@ -17,7 +17,7 @@ Future<User?> createUser({
 }) async {
   try {
     await init();
-    final credential = await auth.createUserWithEmailAndPassword(
+    final credential = await _auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -45,7 +45,7 @@ Future<User?> login({
 }) async {
   try {
     await init();
-    final credential = await auth.signInWithEmailAndPassword(
+    final credential = await _auth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
