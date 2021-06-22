@@ -16,11 +16,12 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     final _userProvider = Provider.of<UserProvider>(context);
-    _userProvider.buildContext = context;
 
     if (_userProvider.isLogin) {
-      Future.delayed(const Duration(milliseconds: 1130)).then((value) {
-        Get.to(MainScreen());
+      Future.delayed(
+        const Duration(milliseconds: 1130),
+      ).then((value) {
+        Get.to(() => MainScreen());
       });
     }
 
@@ -35,12 +36,14 @@ class _LoginState extends State<Login> {
             children: [
               TextField(
                 onChanged: (value) => setState(() => email = value),
+                autocorrect: false,
                 decoration: const InputDecoration(
                   hintText: '이메일을 입력하세요',
                 ),
               ),
               TextField(
                 onChanged: (value) => setState(() => password = value),
+                autocorrect: false,
                 decoration: const InputDecoration(
                   hintText: '비밀번호를 입력하세요',
                 ),

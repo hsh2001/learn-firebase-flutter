@@ -16,8 +16,9 @@ class __ScreenState extends State<_Screen> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.to(userProvider.isLogin ? MainScreen() : Login());
+      Get.to(() => userProvider.isLogin ? MainScreen() : Login());
     });
 
     return Container(
