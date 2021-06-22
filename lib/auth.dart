@@ -4,9 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 final _auth = FirebaseAuth.instance;
 bool _isInit = false;
 
-Future init() async {
+Future<void> init() async {
   if (!_isInit) {
-    return await Firebase.initializeApp();
+    await Firebase.initializeApp();
   }
 }
 
@@ -59,7 +59,7 @@ Future<User?> login({
     } else if (error.code == 'wrong-password') {
       errorHandler('Wrong password provided for that user.');
     } else {
-      errorHandler(e);
+      errorHandler(e.toString());
     }
 
     return null;
