@@ -65,3 +65,7 @@ Future<User?> login({
     return null;
   }
 }
+
+Future<void> logout() {
+  return _auth.signOut();
+}

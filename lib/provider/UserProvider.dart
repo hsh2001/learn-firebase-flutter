@@ -131,4 +131,12 @@ class UserProvider extends ChangeNotifier {
     }
     return _user;
   }
+
+  Future<void> logout() async {
+    await auth.logout();
+    await _deleteLoginInfoOnDB();
+    _user = null;
+    _email = '';
+    _password = '';
+  }
 }
