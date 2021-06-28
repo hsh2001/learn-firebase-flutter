@@ -7,18 +7,13 @@ import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
-class _Screen extends StatefulWidget {
-  @override
-  __ScreenState createState() => __ScreenState();
-}
-
-class __ScreenState extends State<_Screen> {
+class _Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
 
-    Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.to(() => userProvider.isLogin ? MainScreen() : Login());
+    userProvider.loginBySavedInfo().then((user) {
+      Get.to(() => user == null ? Login() : MainScreen());
     });
 
     return Container(
